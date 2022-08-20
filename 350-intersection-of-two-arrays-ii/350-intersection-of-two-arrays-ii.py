@@ -10,12 +10,9 @@ class Solution:
                     return intersect
                 if nums1[i] == nums2[j]:
                     intersect.append(nums1[i])
-                    # if len(intersect) == len(nums1) or len(intersect) == len(nums2):
-                    #     return intersect
                     nums1.pop(i)
                     nums2.pop(j)
                     j = 0
-                    # i = 0
                     continue
                 j += 1
             i += 1
