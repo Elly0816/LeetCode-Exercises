@@ -12,7 +12,7 @@ var generate = function(numRows) {
             triangle[0].push(1);
         } else {
             for(let j=0; j<=i; j++){
-                if((!triangle[i-1][j-1]) || (!triangle[i-1][j])) {
+                if(j-1<0 || j >= triangle[i-1].length) {
                     triangle[i].push(1);
                 } else {
                     triangle[i].push(triangle[i-1][j-1] + triangle[i-1][j]);
