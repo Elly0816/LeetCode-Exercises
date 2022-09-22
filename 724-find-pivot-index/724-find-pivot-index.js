@@ -3,12 +3,14 @@
  * @return {number}
  */
 var pivotIndex = function(nums) {
-    const left = 0;
-    const right = nums.length;
+    let left = 0;
+    let right = nums.reduce((total, current) => {return total+current}, 0);
     for (let i=0; i<nums.length; i++){
-        if (nums.slice(left, i).reduce((total, curr) => {return total + curr}, 0) === nums.slice(i+1, right).reduce((total, curr) => {return total + curr}, 0)){
+        right -= nums[i];
+        if (right === left){
             return i;
-        };
+        }
+        left += nums[i];
     };
     return -1;
 };
