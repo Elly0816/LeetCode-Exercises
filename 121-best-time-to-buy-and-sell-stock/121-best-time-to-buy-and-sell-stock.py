@@ -1,16 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # look for the index of the lowest value
-        # look for the max value with an index greater than that of the lowest value
-        # return the difference
-        curr_diff = max_diff = 0
-        i = 0
-        j = 1
-        while (j < len(prices)):
-            curr_diff = prices[j] - prices[i]
-            if prices[j] < prices[i]:
-                i = j
+        buy = 0
+        sell = 1
+        curr_diff = 0
+        max_diff = 0
+        length = len(prices)
+        
+        while sell < length:
+            curr_diff = prices[sell] - prices[buy]
+            if prices[sell] < prices[buy]:
+                buy = sell
             else:
                 max_diff = max(curr_diff, max_diff)
-            j += 1
+            sell +=1
         return max_diff
