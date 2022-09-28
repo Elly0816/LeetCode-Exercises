@@ -6,7 +6,7 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        ## Tortoise and the hare algorithm
+        ## The tortoise and the hare algorithm
         slow = head
         fast = head
         
