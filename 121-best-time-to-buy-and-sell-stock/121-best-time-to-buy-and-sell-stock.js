@@ -3,20 +3,27 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let currentMax = 0;
-    let globalMax = 0;
-    let right = 1;
-    let left = 0;
-    while (right < prices.length){
-        if (prices[right] - prices[left] > currentMax){
-            currentMax = prices[right] - prices[left];
+    let currDiff = 0;
+    let maxDiff = 0;
+    const length = prices.length;
+    let buy = 0;
+    let sell = 1;
+    
+    while (sell < length){
+        //Check if the difference is greater than the current difference
+        if (prices[sell] - prices[buy] > currDiff){
+            currDiff = prices[sell] - prices[buy];
         }
-        if (prices[right] > prices[left]){
-            globalMax = Math.max(currentMax, globalMax);
+        
+        if (prices[sell] < prices[buy]){
+            buy = sell;
         } else {
-            left = right;
+            maxDiff = Math.max(currDiff, maxDiff);
         }
-        right += 1;
+        
+        sell ++;
+        
     }
-    return globalMax;
-};
+    
+    return maxDiff;
+}
